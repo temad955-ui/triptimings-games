@@ -1,0 +1,43 @@
+# Publishes site/ to GitHub Pages on every push to main (and manually).
+#
+# One-time setup (repo owner):
+#   1. Settings → General → Danger Zone → Change visibility → Public
+#      (GitHub Pages is free only for public repositories).
+#   2. Settings → Pages → Build and deployment → Source: "GitHub Actions".
+#   3. Optional custom domain: Settings → Pages → Custom domain (e.g. games.triptimings.com)
+#      and a DNS CNAME record games → temad955-ui.github.io
+#
+# The same site also runs in Docker/Coolify (see DEPLOY-AR.md); paths are
+# relative, so it works at the domain root and under /triptimings-games/.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

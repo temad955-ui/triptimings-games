@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 · Trip Timings Games</title>
+  <script>
+    // Works at the domain root and under a GitHub Pages project path (/<repo>/).
+    var seg = location.pathname.split('/')[1];
+    var ROOT = (/\.github\.io$/.test(location.hostname) && seg) ? '/' + seg + '/' : '/';
+    document.write('<link rel="stylesheet" href="' + ROOT + 'shared/hub.css" />');
+  </script>
+</head>
+<body>
+  <main class="game-shell" style="justify-content:center;min-height:100vh">
+    <div class="panel">
+      <div style="font-size:64px">🐪</div>
+      <h2>الصفحة غير موجودة</h2>
+      <p>Page not found</p>
+      <a class="btn" id="home" href="/" style="text-decoration:none">كل الألعاب · All games</a>
+    </div>
+  </main>
+  <script>document.getElementById('home').href = ROOT;</script>
+</body>
+</html>

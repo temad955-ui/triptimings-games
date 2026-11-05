@@ -1,0 +1,91 @@
+/* =========================================================================
+   Trip Timings Games Hub — ad slot styles (ads.css)
+   Self-contained (no CSS variables) so it works in every game.
+   Every slot has a FIXED height, so neither the promo nor a paid ad that
+   arrives later moves the page (no layout shift).
+   ========================================================================= */
+.ad-slot {
+  position: relative; box-sizing: border-box;
+  display: block; width: 100%; margin-inline: auto; overflow: hidden;
+  border-radius: 12px; contain: layout paint;
+  font-family: 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  text-align: start; color: #f4f1ea;
+}
+.ad-slot *, .ad-slot *::before, .ad-slot *::after { box-sizing: border-box; }
+
+/* ---- sizes ---- */
+.ad-slot--banner { max-width: 320px; height: 50px; }          /* mobile banner 320×50 */
+.ad-slot--rect   { max-width: 336px; height: 100px; }         /* large mobile banner 320×100 */
+@media (min-width: 768px) {
+  .ad-slot--banner { max-width: 728px; height: 90px; }        /* leaderboard 728×90 */
+}
+@media (min-width: 768px) and (min-height: 760px) {
+  .ad-slot--rect { max-width: 300px; height: 250px; }         /* medium rectangle 300×250 */
+}
+
+/* ---- pinned bottom banner (game pages) ---- */
+.ad-slot--fixed {
+  position: fixed; z-index: 45; left: 0; right: 0;
+  bottom: env(safe-area-inset-bottom, 0px);
+  border-radius: 12px 12px 0 0;
+  background: rgba(8, 12, 30, .96);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, .45);
+}
+/* while a round is running: no banners at all (nothing over the canvas) */
+.tt-ads-playing .ad-slot--banner { display: none !important; }
+/* keep centred menus clear of the pinned banner */
+.tt-ads-fixed-on .overlay { padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)); }
+@media (min-width: 768px) { .tt-ads-fixed-on .overlay { padding-bottom: calc(106px + env(safe-area-inset-bottom, 0px)); } }
+
+/* ---- layers: cross-promo underneath, paid ad on top once filled ---- */
+.ad-promo, .ad-net { position: absolute; inset: 0; }
+.ad-net { z-index: 1; display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0; }
+.ad-slot.is-filled .ad-net { pointer-events: auto; opacity: 1; }
+.ad-slot.is-filled .ad-promo { visibility: hidden; }
+.ad-net iframe { max-width: 100%; }
+
+/* "Advertisement" label: only on paid ads (AdSense allows this wording) */
+.ad-label {
+  position: absolute; z-index: 2; top: 0; inset-inline-start: 6px;
+  font-size: 9px; line-height: 12px; padding: 0 4px; border-radius: 0 0 4px 4px;
+  background: rgba(0, 0, 0, .55); color: #cfd3e6; display: none;
+}
+.ad-slot.is-filled .ad-label { display: block; }
+
+/* ---- cross-promo look ---- */
+.ad-promo-link {
+  height: 100%; display: flex; align-items: center; gap: 10px; padding: 6px 10px;
+  text-decoration: none; color: inherit; border-radius: inherit;
+  background: linear-gradient(110deg, rgba(242,181,68,.18), rgba(46,196,182,.14)), rgba(12, 18, 44, .92);
+  border: 1px solid rgba(242, 181, 68, .38);
+}
+.ad-promo-icon { font-size: 26px; line-height: 1; flex: none; }
+.ad-promo-text { flex: 1; min-width: 0; display: grid; line-height: 1.2; }
+.ad-promo-text small { color: #ffd27a; font-size: 10px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ad-promo-text b { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ad-promo-sub { color: #aab1cf; font-size: 12px; display: none; }
+.ad-promo-cta {
+  flex: none; font-weight: 800; font-size: 13px; white-space: nowrap;
+  background: #f2b544; color: #2a1a00; padding: 6px 12px; border-radius: 10px;
+}
+.ad-promo-link:focus-visible { outline: 3px solid #5aa9ff; outline-offset: -3px; }
+
+/* banner on desktop (90px) and rectangles: room for the description */
+@media (min-width: 768px) {
+  .ad-slot--banner .ad-promo-icon { font-size: 40px; }
+  .ad-slot--banner .ad-promo-text b { font-size: 17px; }
+  .ad-slot--banner .ad-promo-sub { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ad-slot--banner .ad-promo-cta { font-size: 15px; padding: 10px 18px; }
+}
+.ad-slot--rect .ad-promo-icon { font-size: 34px; }
+.ad-slot--rect .ad-promo-text b { font-size: 15px; white-space: normal; }
+.ad-slot--rect .ad-promo-sub {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+@media (min-width: 768px) and (min-height: 760px) {
+  .ad-slot--rect .ad-promo-link { flex-direction: column; justify-content: center; text-align: center; gap: 8px; padding: 16px; }
+  .ad-slot--rect .ad-promo-icon { font-size: 56px; }
+  .ad-slot--rect .ad-promo-text b { font-size: 18px; }
+  .ad-slot--rect .ad-promo-cta { padding: 10px 22px; font-size: 15px; }
+}
+.panel .ad-slot, .quiz-card .ad-slot { margin-top: 6px; }

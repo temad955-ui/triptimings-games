@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1026" />
+  <title>Daily Lucky Wheel · Trip Timings Games</title>
+  <meta name="description" content="Spin the Trip Timings lucky wheel once a day for travel rewards and points." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared/hub.css" />
+  <link rel="stylesheet" href="../../shared/promo.css" />
+  <link rel="stylesheet" href="../../shared/ads.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-bar">
+      <h1 class="game-title" data-t="title">عجلة الحظ اليومية</h1>
+      <div class="stats">
+        <div class="stat"><small data-t="coins">النقاط</small><b id="coins">0</b></div>
+        <div class="stat"><small data-t="streak">أيام متتالية</small><b id="streak">0</b></div>
+      </div>
+    </header>
+
+    <div class="wheel-wrap">
+      <div class="pointer" aria-hidden="true"></div>
+      <canvas id="wheel" width="600" height="600" aria-label="Lucky wheel"></canvas>
+      <button class="hub-btn" id="spinBtn" data-t="spin">لِف</button>
+    </div>
+
+    <p class="status" id="status"></p>
+
+    <div class="week" id="week" aria-label="Daily streak"></div>
+
+    <section class="wallet" id="walletBox" hidden>
+      <h2 data-t="wallet">جوائزك</h2>
+      <ul id="wallet"></ul>
+    </section>
+
+    <div class="promo-slot"><div class="ad-slot" id="wheelPromo" data-slot="start"></div></div>
+  </main>
+
+  <div class="overlay" id="prizePanel" hidden>
+    <div class="panel">
+      <div class="prize-icon" id="prizeIcon">🎁</div>
+      <h2 id="prizeTitle"></h2>
+      <p id="prizeText"></p>
+      <div class="code" id="prizeCode" hidden></div>
+      <a class="btn" id="prizeUse" target="_blank" rel="noopener" hidden data-t="use">استخدمها على تريب تايمنجز</a>
+      <button class="btn ghost" id="prizeClose" data-t="ok">رائع!</button>
+      <div class="ad-slot" data-slot="gameover"></div>
+    </div>
+  </div>
+
+  <div class="ad-slot" data-slot="banner-bottom" data-fixed="1"></div>
+
+  <script src="../../shared/hub.js"></script>
+  <script src="../../shared/promo.js" data-game="spin-wheel" data-home="1" data-ribbon="0"></script>
+  <!-- Ad slots: settings in /shared/ads-config.js (AdSense or any network; cross-promo by default) -->
+  <script src="../../shared/ads-config.js"></script>
+  <script src="../../shared/ads.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

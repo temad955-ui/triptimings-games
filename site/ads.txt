@@ -1,0 +1,8 @@
+# ads.txt — Trip Timings Games (https://iabtechlab.com/ads-txt/)
+# Lists who may sell ads on this site. Required by Google AdSense.
+#
+# When AdSense is approved, delete the "#" from the line below and replace
+# pub-XXXXXXXXXXXXXXXX with YOUR publisher id (AdSense → Account → Account information).
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+#
+# Other networks give you their own lines: paste them under this one.

@@ -1,0 +1,6 @@
+*.md
+docker-compose.yml
+scripts/
+.git
+**/.DS_Store
+.github/

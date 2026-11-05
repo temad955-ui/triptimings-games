@@ -1,0 +1,77 @@
+/* =========================================================================
+   Trip Timings Games Hub — promo + home-button styles (promo.css)
+   Self-contained (no CSS variables) so it can be dropped into any game,
+   including games with their own design system. promo.js loads it
+   automatically if the page does not link it.
+   ========================================================================= */
+.tt-home, .tt-ribbon, .tt-promo-banner, .tt-promo-modal { font-family: 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; box-sizing: border-box; }
+.tt-ribbon *, .tt-promo-modal *, .tt-promo-banner * { box-sizing: border-box; }
+.tt-home:focus-visible, .tt-promo-modal a:focus-visible, .tt-ribbon a:focus-visible { outline: 3px solid #5aa9ff; outline-offset: 3px; }
+/* ---------- floating back-to-lobby button ---------- */
+.tt-home {
+  position: fixed; z-index: 60;
+  top: max(10px, env(safe-area-inset-top)); inset-inline-start: 10px;
+  width: 42px; height: 42px; border-radius: 12px;
+  display: grid; place-items: center;
+  background: rgba(11, 16, 38, .78); border: 1px solid rgba(255, 255, 255, 0.10);
+  color: #ffd27a; backdrop-filter: blur(6px);
+}
+.tt-home svg { width: 22px; height: 22px; }
+
+/* ---------- promo: inline banner ---------- */
+.tt-promo-banner {
+  display: flex; align-items: center; gap: 12px;
+  background: linear-gradient(110deg, rgba(242,181,68,.16), rgba(46,196,182,.12));
+  border: 1px solid rgba(242, 181, 68, .35); border-radius: 16px;
+  padding: 12px 14px; text-align: start;
+}
+.tt-promo-icon { font-size: 34px; line-height: 1; }
+.tt-promo-body { flex: 1; display: grid; gap: 1px; min-width: 0; }
+.tt-promo-body small { color: #ffd27a; font-size: 11px; font-weight: 700; }
+.tt-promo-body b { font-size: 15px; }
+.tt-promo-body span { color: #aab1cf; font-size: 13px; }
+.tt-promo-cta {
+  flex: none; text-decoration: none; font-weight: 800; font-size: 14px;
+  background: #f2b544; color: #2a1a00; padding: 9px 14px; border-radius: 12px; white-space: nowrap;
+}
+
+/* ---------- promo: bottom ribbon ---------- */
+.tt-ribbon {
+  position: fixed; z-index: 30; inset-inline: 10px;
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  max-width: 560px; margin-inline: auto;
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(14, 20, 50, .94); border: 1px solid rgba(242,181,68,.35);
+  border-radius: 14px; padding: 8px 8px 8px 12px; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  transform: translateY(140%); transition: transform .45s cubic-bezier(.2,.9,.3,1.2);
+  font-size: 13px;
+}
+.tt-ribbon.show { transform: none; }
+.tt-ribbon p { margin: 0; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tt-ribbon b { color: #ffd27a; }
+.tt-ribbon-cta { text-decoration: none; font-weight: 800; background: #2ec4b6; color: #01302b; padding: 7px 12px; border-radius: 10px; white-space: nowrap; }
+.tt-ribbon-x { background: none; border: 0; color: #aab1cf; font-size: 22px; line-height: 1; cursor: pointer; padding: 0 6px; }
+
+/* ---------- promo: game-over card ---------- */
+.tt-promo-modal {
+  position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: 16px;
+  background: rgba(5, 8, 22, .7); backdrop-filter: blur(4px); animation: ttFade .25s ease;
+  font-family: 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #f4f1ea;
+}
+.tt-promo-card {
+  position: relative; width: min(360px, 100%); text-align: center; display: grid; gap: 8px;
+  background: linear-gradient(170deg, #1b2556, #0f1533); border: 1px solid rgba(242,181,68,.4);
+  border-radius: 22px; padding: 22px 18px 16px; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45); animation: ttPop .35s cubic-bezier(.2,.9,.3,1.3);
+}
+.tt-promo-card small { color: #ffd27a; font-weight: 700; }
+.tt-promo-card h3 { margin: 0; font-size: 21px; }
+.tt-promo-card p { margin: 0; color: #aab1cf; }
+.tt-promo-card em { color: #aab1cf; font-size: 11px; font-style: normal; }
+.tt-promo-hero { font-size: 64px; line-height: 1.1; }
+.tt-promo-card .tt-promo-cta { display: block; padding: 12px; font-size: 16px; margin-top: 4px; }
+.tt-promo-later { background: none; border: 0; color: #aab1cf; cursor: pointer; padding: 6px; text-decoration: underline; }
+.tt-promo-x { position: absolute; top: 8px; inset-inline-end: 10px; background: none; border: 0; color: #aab1cf; font-size: 24px; cursor: pointer; }
+
+@keyframes ttFade { from { opacity: 0; } }
+@keyframes ttPop { from { transform: scale(.85); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .tt-ribbon, .tt-promo-modal, .tt-promo-card { animation: none !important; transition: none !important; } }

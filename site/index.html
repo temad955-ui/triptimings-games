@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1026" />
+  <title>Trip Timings Games · ألعاب تريب تايمنجز</title>
+  <meta name="description" content="Free browser games from Trip Timings: Nile Bubbles, Egypt Explorer Quiz, Neon Snake, the Daily Lucky Wheel and CyberBreaker. Play, win rewards and discover Egypt." />
+  <meta property="og:title" content="Trip Timings Games" />
+  <meta property="og:description" content="العب مجانًا، اربح مكافآت يومية، واكتشف مصر مع تريب تايمنجز." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6 58 56H6z' fill='%23f2b544'/%3E%3Cpath d='M32 6 45 56H32z' fill='%23b9831f'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared/hub.css" />
+  <link rel="stylesheet" href="shared/promo.css" />
+  <link rel="stylesheet" href="shared/ads.css" />
+  <link rel="stylesheet" href="lobby.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 58 56H6z" fill="#f2b544"/><path d="M32 6 45 56H32z" fill="#b9831f"/><circle cx="49" cy="15" r="6" fill="#2ec4b6"/></svg>
+      <span><b data-t="brand">ألعاب تريب تايمنجز</b><small data-t="brandSub">Trip Timings Games</small></span>
+    </a>
+    <button class="lang" id="langBtn" type="button" aria-label="Language">EN</button>
+  </header>
+
+  <main class="lobby">
+    <div class="ad-slot" data-slot="banner-top"></div>
+
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow" data-t="eyebrow">5 ألعاب مجانية · بدون تحميل</p>
+        <h1 data-t="h1">العب، اربح، واكتشف مصر</h1>
+        <p class="lead" data-t="lead">ألعاب سريعة تعمل على الموبايل والكمبيوتر. لف عجلة الحظ كل يوم واجمع مكافآت لرحلتك القادمة.</p>
+        <div class="hero-cta">
+          <a class="btn" href="games/spin-wheel/" id="heroWheel" data-t="heroWheel">🎡 لف عجلة اليوم</a>
+          <a class="btn ghost" href="#games" data-t="heroAll">كل الألعاب</a>
+        </div>
+      </div>
+      <div class="daily" id="daily" role="link" tabindex="0">
+        <div class="daily-icon" aria-hidden="true">🎡</div>
+        <div>
+          <b id="dailyTitle"></b>
+          <small id="dailySub"></small>
+        </div>
+      </div>
+    </section>
+
+    <section id="games" aria-labelledby="gamesTitle">
+      <h2 id="gamesTitle" class="section-title" data-t="games">الألعاب</h2>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section class="promo-wrap" aria-label="Trip Timings">
+      <div id="lobbyPromo"></div>
+    </section>
+
+    <div class="ad-slot" data-slot="banner-bottom"></div>
+
+    <section class="why">
+      <div><span>⚡</span><b data-t="w1">فورية</b><small data-t="w1s">تفتح في ثانية بدون تسجيل</small></div>
+      <div><span>📱</span><b data-t="w2">لكل الأجهزة</b><small data-t="w2s">موبايل وتابلت وكمبيوتر</small></div>
+      <div><span>🎁</span><b data-t="w3">مكافآت يومية</b><small data-t="w3s">خصومات ونقاط من عجلة الحظ</small></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p><span data-t="foot">مقدمة من</span> <a id="footLink" href="#" target="_blank" rel="noopener" data-surface="footer" data-offer="home">Trip Timings</a> · © <span id="year"></span> · <a href="privacy.html" data-t="privacy">الخصوصية</a></p>
+  </footer>
+
+  <script src="shared/hub.js"></script>
+  <script src="shared/promo.js" data-game="hub" data-ribbon="0"></script>
+  <script src="shared/ads-config.js"></script>
+  <script src="shared/ads.js"></script>
+  <script src="lobby.js"></script>
+</body>
+</html>

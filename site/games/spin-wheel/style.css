@@ -1,0 +1,42 @@
+.wheel-wrap { position: relative; width: min(420px, 92vw, calc(100vh - 330px)); min-width: 250px; aspect-ratio: 1; margin-top: 6px; }
+#wheel { width: 100%; height: 100%; display: block; filter: drop-shadow(0 18px 40px rgba(0,0,0,.5)); }
+.pointer {
+  position: absolute; z-index: 2; top: -6px; left: 50%; transform: translateX(-50%);
+  width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent;
+  border-top: 34px solid var(--gold-2); filter: drop-shadow(0 4px 6px rgba(0,0,0,.5));
+}
+.hub-btn {
+  position: absolute; z-index: 2; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 26%; aspect-ratio: 1; border-radius: 50%; border: 4px solid #fff3d6; cursor: pointer;
+  background: radial-gradient(circle at 35% 30%, var(--gold-2), var(--gold) 60%, #b9831f);
+  color: #2a1a00; font-weight: 900; font-size: clamp(16px, 4.5vw, 24px); box-shadow: 0 8px 22px rgba(0,0,0,.45);
+}
+.hub-btn:disabled { filter: grayscale(.7) brightness(.8); cursor: default; }
+.hub-btn:not(:disabled) { animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 50% { transform: translate(-50%, -50%) scale(1.06); } }
+.status { margin: 0; color: var(--muted); text-align: center; font-weight: 700; min-height: 1.5em; }
+
+.week { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.day {
+  width: 44px; padding: 6px 0; border-radius: 12px; text-align: center; font-size: 12px; line-height: 1.3;
+  background: var(--panel); border: 1px solid var(--line); color: var(--muted);
+}
+.day b { display: block; font-size: 16px; }
+.day.done { background: rgba(46,196,182,.2); border-color: var(--nile); color: var(--text); }
+.day.today { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(242,181,68,.3); }
+
+.wallet { width: 100%; max-width: 560px; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 14px; }
+.wallet h2 { margin: 0 0 8px; font-size: 17px; }
+.wallet ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.wallet li { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.wallet li span { flex: 1; }
+.wallet code { background: rgba(242,181,68,.15); color: var(--gold-2); padding: 3px 8px; border-radius: 8px; font-weight: 800; }
+.wallet small { color: var(--muted); }
+.promo-slot { width: 100%; max-width: 560px; }
+
+.prize-icon { font-size: 72px; line-height: 1; }
+.code {
+  font: 900 24px/1 ui-monospace, Menlo, monospace; letter-spacing: 2px; color: var(--gold-2);
+  border: 2px dashed var(--gold); border-radius: 12px; padding: 12px; cursor: pointer; user-select: all;
+}
+.panel a.btn { text-decoration: none; display: block; }

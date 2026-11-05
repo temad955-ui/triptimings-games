@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#0b1026" />
+  <title>Nile Bubbles · Trip Timings Games</title>
+  <meta name="description" content="Nile Bubbles: aim, match three colours and clear the board. Free bubble shooter on Trip Timings Games." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared/hub.css" />
+  <link rel="stylesheet" href="../../shared/promo.css" />
+  <link rel="stylesheet" href="../../shared/ads.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-bar">
+      <h1 class="game-title" data-t="title">فقاعات النيل</h1>
+      <div class="stats">
+        <div class="stat"><small data-t="level">المستوى</small><b id="level">1</b></div>
+        <div class="stat"><small data-t="score">النقاط</small><b id="score">0</b></div>
+        <div class="stat"><small data-t="best">الأفضل</small><b id="best">0</b></div>
+      </div>
+    </header>
+    <div class="board-wrap">
+      <canvas id="board" aria-label="Bubble board"></canvas>
+      <div class="toast" id="toast"></div>
+    </div>
+    <p class="hint" data-t="hint">اسحب للتصويب وارفع إصبعك للإطلاق · اضغط على الكرة لتبديلها</p>
+  </main>
+
+  <div class="overlay" id="startPanel">
+    <div class="panel">
+      <h2 data-t="title">فقاعات النيل</h2>
+      <p data-t="howto">صوّب الكرة لتلمس كرتين أو أكثر من نفس اللون فتنفجر. الكرات المعلّقة تسقط معها! كل 6 رميات بدون تفجير ينزل صف جديد.</p>
+      <button class="btn" id="startBtn" data-t="play">ابدأ اللعب</button>
+      <div class="ad-slot" data-slot="start"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overPanel" hidden>
+    <div class="panel">
+      <h2 id="overTitle" data-t="over">انتهت اللعبة</h2>
+      <div class="big-score" id="overScore">0</div>
+      <p id="overBest"></p>
+      <button class="btn" id="againBtn" data-t="again">العب مرة أخرى</button>
+      <div class="ad-slot" id="overPromo" data-slot="gameover"></div>
+    </div>
+  </div>
+
+  <div class="ad-slot" data-slot="banner-bottom" data-fixed="1"></div>
+
+  <script src="../../shared/hub.js"></script>
+  <script src="../../shared/promo.js" data-game="bubble-shooter" data-home="1" data-ribbon="0"></script>
+  <!-- Ad slots: settings in /shared/ads-config.js (AdSense or any network; cross-promo by default) -->
+  <script src="../../shared/ads-config.js"></script>
+  <script src="../../shared/ads.js" data-playing="body" data-menus="#startPanel:not([hidden]), #overPanel:not([hidden])"></script>
+  <script src="game.js"></script>
+</body>
+</html>

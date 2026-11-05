@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1026" />
+  <title>Egypt Explorer Quiz · Trip Timings Games</title>
+  <meta name="description" content="How well do you know Egypt? A free tourism and general-knowledge quiz from Trip Timings." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared/hub.css" />
+  <link rel="stylesheet" href="../../shared/promo.css" />
+  <link rel="stylesheet" href="../../shared/ads.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-bar">
+      <h1 class="game-title" data-t="title">مستكشف مصر</h1>
+      <div class="stats">
+        <div class="stat"><small data-t="score">النقاط</small><b id="score">0</b></div>
+        <div class="stat"><small data-t="best">الأفضل</small><b id="best">0</b></div>
+      </div>
+    </header>
+
+    <!-- start -->
+    <section class="quiz-card" id="startView">
+      <div class="quiz-hero" aria-hidden="true">🧭</div>
+      <h2 data-t="title">مستكشف مصر</h2>
+      <p class="muted" data-t="intro">10 أسئلة · 20 ثانية لكل سؤال · كلما أسرعت زادت نقاطك</p>
+      <div class="cats" role="radiogroup">
+        <button class="cat" data-cat="egypt" role="radio"><span>🏺</span><b data-t="catEgypt">سياحة مصر</b></button>
+        <button class="cat" data-cat="mixed" role="radio"><span>🌍</span><b data-t="catMixed">منوعات</b></button>
+        <button class="cat" data-cat="general" role="radio"><span>💡</span><b data-t="catGeneral">معلومات عامة</b></button>
+      </div>
+      <button class="btn" id="startBtn" data-t="play">ابدأ المسابقة</button>
+      <div class="ad-slot" data-slot="start"></div>
+    </section>
+
+    <!-- question -->
+    <section class="quiz-card" id="qView" hidden>
+      <div class="q-top">
+        <span id="qNum">1 / 10</span>
+        <button class="lifeline" id="fiftyBtn" data-t="fifty">50:50</button>
+        <span class="streak" id="streak"></span>
+      </div>
+      <div class="timer"><div class="timer-fill" id="timerFill"></div></div>
+      <h2 class="q-text" id="qText"></h2>
+      <div class="answers" id="answers"></div>
+      <div class="fact" id="fact" hidden></div>
+      <button class="btn nile" id="nextBtn" hidden data-t="next">السؤال التالي</button>
+    </section>
+
+    <!-- result -->
+    <section class="quiz-card" id="resultView" hidden>
+      <div class="quiz-hero" id="resultIcon" aria-hidden="true">🏆</div>
+      <h2 id="resultTitle"></h2>
+      <div class="big-score" id="resultScore">0</div>
+      <p class="muted" id="resultLine"></p>
+      <div class="row-btns">
+        <button class="btn" id="againBtn" data-t="again">العب مرة أخرى</button>
+        <button class="btn ghost" id="shareBtn" data-t="share">شارك النتيجة</button>
+      </div>
+      <div class="ad-slot" id="resultPromo" data-slot="gameover"></div>
+    </section>
+  </main>
+
+  <div class="ad-slot" data-slot="banner-bottom" data-fixed="1"></div>
+
+  <script src="../../shared/hub.js"></script>
+  <script src="../../shared/promo.js" data-game="tourism-quiz" data-home="1" data-ribbon="0"></script>
+  <!-- Ad slots: settings in /shared/ads-config.js (AdSense or any network; cross-promo by default) -->
+  <script src="../../shared/ads-config.js"></script>
+  <script src="../../shared/ads.js" data-playing="#qView:not([hidden])"></script>
+  <script src="questions.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
