@@ -9,7 +9,7 @@
 
    ── Usage ────────────────────────────────────────────────────────────────
    <script src="/shared/hub.js"></script>
-   <script src="/shared/promo.js" data-game="snake" data-home="1"></script>
+   <script src="/shared/promo.js" data-game="dominoes" data-home="1"></script>
 
    data-game   game id, used as utm_campaign            (required)
    data-home   "1" → inject the floating back-to-lobby button

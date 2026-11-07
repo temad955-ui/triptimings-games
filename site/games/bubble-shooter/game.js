@@ -26,7 +26,8 @@
   const SHOOT_Y = H - 46;
   const DEAD_ROW = 13;
   const SPEED = 950;
-  const MISSES_PER_ROW = 6;
+  // misses allowed before a new row drops: 7 on level 1, one fewer every 2 levels, never below 3
+  const missesFor = (level) => Math.max(3, 7 - Math.floor((level - 1) / 2));
   const COLORS = [
     { base: '#ff6b8b', dark: '#c2335a' }, // rose
     { base: '#2ec4b6', dark: '#13867b' }, // nile
@@ -174,7 +175,7 @@
       if (!colorsInPlay().includes(G.next)) G.next = randomColor();
     } else {
       G.misses++;
-      if (G.misses >= MISSES_PER_ROW) { G.misses = 0; newRow(); toast(T('row')); }
+      if (G.misses >= missesFor(G.level)) { G.misses = 0; newRow(); toast(T('row')); }
     }
     checkLose();
   }
@@ -215,6 +216,9 @@
       $('#overBest').className = record && G.score > 0 ? 'new-best' : '';
       window.TTPromo && TTPromo.banner($('#overPromo'), { surface: 'bubble-over' });
       $('#overPanel').hidden = false;
+      // shared wallet: 1 ⭐ per 100 points (max 50 per game)
+      const stars = Math.min(50, Math.floor(G.score / 100));
+      if (stars && window.TTEco) { TTEco.add(stars, 'bubble-shooter'); TTEco.toast('+' + stars + ' ⭐'); }
       window.TTPromo && TTPromo.gameOver({ score: G.score });
     }, 600);
   }
@@ -274,8 +278,8 @@
     G.pops.forEach((p) => bubble(p.x, p.y, p.color, (R - 1) * (1 + p.t * 1.2), 1 - p.t));
     G.falling.forEach((f) => bubble(f.x, f.y, f.color));
     // misses meter
-    for (let i = 0; i < MISSES_PER_ROW; i++) {
-      ctx.fillStyle = i < MISSES_PER_ROW - G.misses ? 'rgba(242,181,68,.9)' : 'rgba(255,255,255,.15)';
+    for (let i = 0, mx = missesFor(G.level); i < mx; i++) {
+      ctx.fillStyle = i < mx - G.misses ? 'rgba(242,181,68,.9)' : 'rgba(255,255,255,.15)';
       ctx.beginPath(); ctx.arc(18 + i * 14, H - 16, 4, 0, Math.PI * 2); ctx.fill();
     }
     if (!G.over) {

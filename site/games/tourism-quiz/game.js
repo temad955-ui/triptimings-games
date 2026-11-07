@@ -25,7 +25,9 @@
   document.querySelectorAll('[data-t]').forEach((el) => (el.textContent = T(el.dataset.t)));
   document.title = T('title') + ' · Trip Timings Games';
 
-  const ROUND = 10, TIME = 20;
+  // 20 s for the first question, 1 s less each question, never under 12 s
+  const ROUND = 10, timeFor = (i) => Math.max(12, 20 - i);
+  let TIME = 20;
   let cat = hub.load('quiz.cat', 'egypt');
   let Q = null; // round state
   let timer = 0, tStart = 0;
@@ -48,7 +50,7 @@
   function start() {
     Q = { list: pickQuestions(), i: 0, score: 0, correct: 0, streak: 0, fifty: true };
     $('#score').textContent = '0';
-    $('#fiftyBtn').disabled = false;
+    fiftyState();
     show('qView');
     ask();
     hub.track('game_start', { game: 'tourism-quiz', cat });
@@ -57,11 +59,12 @@
   function ask() {
     const q = Q.list[Q.i];
     Q.answered = false;
+    TIME = timeFor(Q.i);
     $('#qNum').textContent = (Q.i + 1) + ' / ' + Q.list.length;
     $('#streak').textContent = Q.streak >= 2 ? T('streak', { n: Q.streak }) : '';
     $('#qText').textContent = tt(q.q);
     $('#fact').hidden = true; $('#nextBtn').hidden = true;
-    $('#fiftyBtn').disabled = !Q.fifty;
+    fiftyState();
     const box = $('#answers'); box.innerHTML = '';
     const order = shuffle([0, 1, 2, 3]);
     order.forEach((idx, n) => {
@@ -141,16 +144,37 @@
     $('#resultLine').textContent = T('line', { c: Q.correct, t: Q.list.length }) + (record && Q.score > 0 ? T('newBest') : '');
     show('resultView');
     window.TTPromo && TTPromo.banner($('#resultPromo'), { surface: 'quiz-result' });
+    // shared wallet: 2 ⭐ per correct answer
+    if (Q.correct && window.TTEco) { TTEco.add(Q.correct * 2, 'tourism-quiz'); TTEco.toast('+' + Q.correct * 2 + ' ⭐'); }
     window.TTPromo && TTPromo.gameOver({ score: Q.score });
   }
 
   function fifty() {
-    if (!Q || !Q.fifty || Q.answered) return;
-    Q.fifty = false; $('#fiftyBtn').disabled = true;
+    if (!Q || Q.answered) return;
+    if (!Q.fifty) {
+      // used up: one more 50:50 for a rewarded ad (once per round)
+      if (Q.adFifty || !window.TTEco) return;
+      const paused = performance.now();
+      cancelAnimationFrame(timer);
+      TTEco.rewarded({ id: 'quiz-fifty', title: hub.lang === 'ar' ? 'شاهد إعلانًا لتحصل على 50:50 إضافية' : 'Watch an ad for an extra 50:50' }).then((ok) => {
+        tStart += performance.now() - paused; // the ad doesn't eat the question timer
+        if (!Q.answered) tick();
+        if (ok) { Q.adFifty = true; Q.fifty = true; fifty(); }
+      });
+      return;
+    }
+    Q.fifty = false; fiftyState();
     shuffle([1, 2, 3]).slice(0, 2).forEach((idx) => {
       const b = document.querySelector('.answer[data-idx="' + idx + '"]');
       if (b) { b.classList.add('gone'); b.disabled = true; }
     });
+  }
+
+  function fiftyState() {
+    const b = $('#fiftyBtn');
+    const ad = !Q.fifty && !Q.adFifty && !!window.TTEco;
+    b.disabled = !Q.fifty && !ad;
+    b.textContent = ad ? '🎬 ' + T('fifty') : T('fifty');
   }
 
   async function share() {

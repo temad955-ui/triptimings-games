@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#07041a" />
+  <title>Dominoes · Trip Timings Games</title>
+  <meta name="description" content="Dominoes in one app: Arabic partners, Draw, Block and All Fives. Play free against smart AI on Trip Timings Games." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared/hub.css" />
+  <link rel="stylesheet" href="../../shared/promo.css" />
+  <link rel="stylesheet" href="../../shared/ads.css" />
+  <link rel="stylesheet" href="../../shared/economy.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ============ table (game screen) ============ -->
+  <main class="table" id="table" hidden>
+    <header class="dbar">
+      <button class="icon-btn" id="menuBtn" type="button" aria-label="Menu">☰</button>
+      <div class="scores" id="scores"></div>
+      <span id="coinChip"></span>
+    </header>
+
+    <div class="felt" id="felt">
+      <canvas id="board" aria-label="Domino board"></canvas>
+      <div class="seat top" id="seat2"></div>
+      <div class="seat right" id="seat1"></div>
+      <div class="seat left" id="seat3"></div>
+      <div class="float" id="float"></div>
+    </div>
+
+    <p class="status" id="status" aria-live="polite"></p>
+
+    <div class="actions">
+      <button class="boost" id="hintBtn" type="button"><span>💡</span><b data-t="hint">تلميح</b><i id="hintN">0</i></button>
+      <button class="boost" id="peekBtn" type="button"><span>👁️</span><b data-t="peek">كشف</b><i id="peekN">0</i></button>
+      <button class="side" id="sideL" type="button" hidden></button>
+      <button class="side" id="sideR" type="button" hidden></button>
+      <button class="draw" id="drawBtn" type="button" hidden></button>
+    </div>
+
+    <div class="hand" id="hand" aria-label="Your tiles"></div>
+  </main>
+
+  <!-- ============ main menu ============ -->
+  <div class="overlay menu" id="menu">
+    <div class="panel wide">
+      <div class="menu-top">
+        <span id="menuCoins"></span>
+        <button class="chip-btn" id="langBtn" type="button">EN</button>
+      </div>
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 120 64"><g transform="rotate(-14 40 32)"><rect x="18" y="6" width="28" height="52" rx="6" class="lt"/><line x1="22" y1="32" x2="42" y2="32" class="ll"/><circle cx="32" cy="19" r="3.4" class="lp"/><circle cx="26" cy="40" r="3.4" class="lp"/><circle cx="38" cy="50" r="3.4" class="lp"/></g><g transform="rotate(12 84 32)"><rect x="70" y="6" width="28" height="52" rx="6" class="lt m"/><line x1="74" y1="32" x2="94" y2="32" class="ll m"/><circle cx="78" cy="13" r="3.4" class="lp m"/><circle cx="90" cy="25" r="3.4" class="lp m"/><circle cx="78" cy="25" r="3.4" class="lp m"/><circle cx="90" cy="13" r="3.4" class="lp m"/><circle cx="84" cy="45" r="3.4" class="lp m"/></g></svg>
+      </div>
+      <h1 data-t="title">دومينو</h1>
+      <p class="sub" data-t="sub">كل أنواع الدومينو في لعبة واحدة</p>
+
+      <h2 class="lbl" data-t="chooseMode">اختر طريقة اللعب</h2>
+      <div class="modes" id="modes" role="radiogroup"></div>
+
+      <h2 class="lbl" data-t="chooseDiff">المستوى</h2>
+      <div class="seg" id="diffs" role="radiogroup"></div>
+      <p class="diff-note" id="diffNote"></p>
+
+      <button class="btn big" id="playBtn" type="button" data-t="play">العب الآن</button>
+      <div class="menu-row">
+        <button class="btn ghost" id="shopBtn" type="button" data-t="shop">🎨 المتجر والأطقم</button>
+        <button class="btn ghost" id="inviteBtn" type="button" data-t="invite">🤝 ادعُ صديق +⭐</button>
+      </div>
+      <p class="stats-line" id="statsLine"></p>
+      <div class="ad-slot" data-slot="start"></div>
+    </div>
+  </div>
+
+  <!-- ============ round / match result ============ -->
+  <div class="overlay" id="roundPanel" hidden>
+    <div class="panel">
+      <h2 id="rTitle"></h2>
+      <p id="rText"></p>
+      <div class="reveal" id="rHands"></div>
+      <div class="board-score" id="rScores"></div>
+      <div class="r-actions" id="rActions"></div>
+      <div class="ad-slot" data-slot="gameover"></div>
+    </div>
+  </div>
+
+  <!-- ============ shop ============ -->
+  <div class="overlay" id="shopPanel" hidden>
+    <div class="panel wide shop">
+      <div class="menu-top"><span id="shopCoins"></span><button class="chip-btn" id="shopClose" type="button" aria-label="Close">✕</button></div>
+      <h2 data-t="shopTitle">المتجر</h2>
+      <div class="pro" id="proBox"></div>
+      <h3 class="lbl" data-t="sets">أطقم الدومينو</h3>
+      <div class="sets" id="sets"></div>
+      <h3 class="lbl" data-t="boosters">المساعدات</h3>
+      <div class="boosters" id="boosters"></div>
+      <p class="tt-eco-note" data-t="simNote">المشتريات والإعلانات هنا محاكاة على الويب. في تطبيق أندرويد تعمل عبر Google Play وAdMob.</p>
+    </div>
+  </div>
+
+  <div class="ad-slot" data-slot="banner-bottom" data-fixed="1"></div>
+
+  <script src="../../shared/hub.js"></script>
+  <script src="../../shared/economy.js"></script>
+  <script src="../../shared/promo.js" data-game="dominoes" data-home="1" data-ribbon="0"></script>
+  <script src="../../shared/ads-config.js"></script>
+  <script src="../../shared/ads.js" data-playing="body.playing" data-menus="#menu:not([hidden]), #roundPanel:not([hidden]), #shopPanel:not([hidden])"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

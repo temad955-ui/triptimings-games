@@ -87,3 +87,27 @@
   .hero { grid-template-columns: 1fr; padding: 22px 18px; }
   .why { grid-template-columns: 1fr; }
 }
+
+/* header wallet + invite */
+.top-actions { display: flex; align-items: center; gap: 8px; }
+.invite-top { padding: 6px 10px; }
+.badge.neon { background: linear-gradient(90deg, #00f0ff, #ff2bd6); color: #12002a; box-shadow: 0 0 12px rgba(0, 240, 255, .5); }
+
+/* invite friends band */
+.invite {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center;
+  padding: 20px 22px; border-radius: 24px;
+  background: linear-gradient(120deg, rgba(0, 240, 255, .12), rgba(255, 43, 214, .12)), var(--panel);
+  border: 1px solid rgba(0, 240, 255, .35); box-shadow: 0 0 30px rgba(0, 240, 255, .12);
+}
+.invite-icon { font-size: 44px; }
+.invite h2 { margin: 0; font-size: 20px; }
+.invite p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+@media (max-width: 760px) {
+  .invite { grid-template-columns: 1fr; text-align: center; }
+  .top-actions .tt-coin-chip { padding: 6px 9px; font-size: 13px; }
+}
+
+/* neon refresh */
+.card:hover, .card:focus-visible { box-shadow: 0 0 0 1px rgba(0, 240, 255, .35), 0 0 28px rgba(0, 240, 255, .18), var(--shadow); }
+.hero h1 { text-shadow: 0 0 24px rgba(255, 210, 122, .35); }

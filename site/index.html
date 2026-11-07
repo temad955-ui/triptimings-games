@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0b1026" />
   <title>Trip Timings Games · ألعاب تريب تايمنجز</title>
-  <meta name="description" content="Free browser games from Trip Timings: Nile Bubbles, Egypt Explorer Quiz, Neon Snake, the Daily Lucky Wheel and CyberBreaker. Play, win rewards and discover Egypt." />
+  <meta name="description" content="Free browser games from Trip Timings: Dominoes (Arabic, Draw, Block, All Fives), Nile Bubbles, Egypt Explorer Quiz, the Daily Lucky Wheel and CyberBreaker. Play, win rewards and discover Egypt." />
   <meta property="og:title" content="Trip Timings Games" />
   <meta property="og:description" content="العب مجانًا، اربح مكافآت يومية، واكتشف مصر مع تريب تايمنجز." />
   <meta property="og:type" content="website" />
@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="shared/hub.css" />
   <link rel="stylesheet" href="shared/promo.css" />
   <link rel="stylesheet" href="shared/ads.css" />
+  <link rel="stylesheet" href="shared/economy.css" />
+  <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="lobby.css" />
 </head>
 <body>
@@ -24,7 +26,11 @@
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 58 56H6z" fill="#f2b544"/><path d="M32 6 45 56H32z" fill="#b9831f"/><circle cx="49" cy="15" r="6" fill="#2ec4b6"/></svg>
       <span><b data-t="brand">ألعاب تريب تايمنجز</b><small data-t="brandSub">Trip Timings Games</small></span>
     </a>
-    <button class="lang" id="langBtn" type="button" aria-label="Language">EN</button>
+    <div class="top-actions">
+      <span id="coins"></span>
+      <button class="lang invite-top" id="inviteTop" type="button" aria-label="Invite">🤝</button>
+      <button class="lang" id="langBtn" type="button" aria-label="Language">EN</button>
+    </div>
   </header>
 
   <main class="lobby">
@@ -54,6 +60,15 @@
       <div class="grid" id="grid"></div>
     </section>
 
+    <section class="invite" aria-labelledby="invT">
+      <div class="invite-icon" aria-hidden="true">🤝</div>
+      <div class="invite-body">
+        <h2 id="invT" data-t="invT">ادعُ أصحابك واكسب ⭐</h2>
+        <p id="invS"></p>
+      </div>
+      <button class="btn" id="inviteBtn" type="button" data-t="invB">🤝 ادعُ الآن</button>
+    </section>
+
     <section class="promo-wrap" aria-label="Trip Timings">
       <div id="lobbyPromo"></div>
     </section>
@@ -72,6 +87,7 @@
   </footer>
 
   <script src="shared/hub.js"></script>
+  <script src="shared/economy.js"></script>
   <script src="shared/promo.js" data-game="hub" data-ribbon="0"></script>
   <script src="shared/ads-config.js"></script>
   <script src="shared/ads.js"></script>

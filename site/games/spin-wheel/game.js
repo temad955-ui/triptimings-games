@@ -137,7 +137,7 @@
   function award(p) {
     let text = '';
     $('#prizeCode').hidden = true; $('#prizeUse').hidden = true;
-    if (p.points) { S.coins += p.points; text = T('points', { n: p.points }); }
+    if (p.points) { TTEco.add(p.points, 'wheel'); text = T('points', { n: p.points }); }
     if (p.tip) { text = T('tip') + ': ' + tt(TIPS[Math.floor(Math.random() * TIPS.length)]); }
     if (p.again) { S.extra++; text = T('again'); }
     if (p.coupon) {
@@ -152,7 +152,7 @@
       S.wallet = S.wallet.slice(0, 10);
     }
     if (!p.again && S.extra === 0 && S.streak > 0 && S.streak % 7 === 0 && S.bonusDay !== hub.today()) {
-      S.coins += 100; S.bonusDay = hub.today(); text += '\n' + T('bonus');
+      TTEco.add(100, 'wheel-streak'); S.bonusDay = hub.today(); text += '\n' + T('bonus');
     }
     save();
     hub.track('wheel_prize', { game: 'spin-wheel', prize: p.id });
@@ -171,7 +171,7 @@
     return [Math.floor(s / 3600), Math.floor(s / 60) % 60, s % 60].map((v) => String(v).padStart(2, '0')).join(':');
   }
   function render() {
-    $('#coins').textContent = S.coins;
+    $('#coins').textContent = TTEco.coins();
     const live = S.lastSpin && dayDiff(S.lastSpin, hub.today()) <= 1 ? S.streak : 0;
     $('#streak').textContent = live;
     if (!spinning) {
