@@ -1,10 +1,11 @@
 Play dominoes the way you like it: every popular domino game lives inside ONE free app. Pick a mode from the main menu and start a match in seconds. No sign-up, works offline.
 
-★ FOUR DOMINO GAMES IN ONE
+★ FIVE DOMINO GAMES IN ONE
 • Arabic Dominoes (Partners 2v2): the classic café game of Egypt and the Arab world. Four players, you and your partner against a team, no drawing, first team to 101 wins.
 • Draw Dominoes (American): draw from the boneyard until you can play. The winner takes the opponent's pips.
 • Block Dominoes: no drawing at all. Pass when you are stuck and outthink your rival.
 • All Fives (Muggins): score every time the open ends add up to 5, 10, 15 or 20. A favourite of domino pros.
+• Domino 31: the Egyptian challenge. Reach exactly 31 or call it right, against the computer or friends.
 
 ★ SMART AI FOR EVERY LEVEL
 • Easy: relaxed games, perfect to learn the rules.

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d3b2e">
+  <title>دومينو 31 · Trip Timings Games</title>
+  <meta name="description" content="Domino 31: the Egyptian domino game. Play free against the computer on Trip Timings Games." />
+  <link rel="stylesheet" href="../../shared/promo.css" />
+  <link rel="stylesheet" href="../../shared/economy.css" />
+  <style>.tt-home{inset-inline-start:auto;left:8px;right:auto;top:max(6px,env(safe-area-inset-top));width:34px;height:34px;border-radius:10px}.tt-home svg{width:18px;height:18px}</style>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="d31-back-shade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient></defs></svg>
+  <!-- Ad slots (src/ad-slots.ts). What fills them is set in the server's promo.json, not here. -->
+  <div class="ad-slot ad-banner" data-ad-place="top" data-ad-screens="home lobby game" hidden></div>
+  <div id="app"><main class="center-msg">…</main></div>
+  <div class="ad-slot ad-box" data-ad-place="start" data-ad-screens="home lobby" hidden></div>
+  <div class="ad-slot ad-banner" data-ad-place="bottom" data-ad-screens="game" hidden></div>
+  <div class="ad-slot ad-box ad-float" data-ad-place="gameover" data-ad-screens="over" hidden></div>
+  <noscript>DOMINO 31 needs JavaScript.</noscript>
+  <!-- Trip Timings Games Hub: shared runtime, wallet and back-to-lobby button.
+       The game keeps its own ad slots (filled from the domino31 server promo.json). -->
+  <script src="../../shared/hub.js"></script>
+  <script src="../../shared/economy.js"></script>
+  <script src="../../shared/promo.js" data-game="domino31" data-home="1" data-ribbon="0"></script>
+  <script type="module" src="app.js"></script>
+  <script>addEventListener("load",function(){var a=document.querySelector(".tt-home");if(a){a.href="../dominoes/";a.setAttribute("aria-label","Dominoes")}});</script>
+</body>
+</html>

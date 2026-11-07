@@ -78,6 +78,10 @@
       desc: { ar: 'بدون سحب: لو مفيش لعب تقول باص. تكتيك وحسابات.', en: 'No drawing: if you can’t play, you pass. Pure tactics.' } },
     { id: 'fives', icon: '5️⃣', name: { ar: 'الخمسات (All Fives)', en: 'All Fives (Muggins)' },
       desc: { ar: 'اجمع نقطًا كل ما مجموع الأطراف يقبل القسمة على 5.', en: 'Score whenever the open ends add up to a multiple of five.' } },
+    // Domino 31 is its own engine (repo temad955-ui/domino31), opened from this menu
+    { id: 'd31', icon: '🎯', link: '../domino31/', tag: { ar: '31 بالظبط · 2–4 👤', en: 'Exactly 31 · 2–4 👤' },
+      name: { ar: 'دومينو 31 (مصري)', en: 'Domino 31 (Egyptian)' },
+      desc: { ar: 'وصّل مجموع أحجارك لـ 31 بالظبط أو نام صح. ضد الكمبيوتر أو مع أصحابك.', en: 'Reach exactly 31 or call it right. Play the computer or friends.' } },
   ];
   const DIFF = {
     easy:   { reward: 20, delay: 750, freeHint: 1 },
@@ -103,6 +107,7 @@
   const S = Object.assign({ mode: 'arabic', diff: 'easy', set: 'neon', sound: true }, cfgStore('settings', {}));
   const ST = Object.assign({ played: 0, won: 0 }, cfgStore('stats', {}));
   const saveS = () => cfgSave('settings', S);
+  if (!E.MODES[S.mode]) S.mode = 'arabic';
   const ownsSet = (s) => s.free || eco.owns('pro_pass') || eco.owns(s.sku || ('set-' + s.id)) || (s.share && eco.owns('set-friend'));
   const curSet = () => { const s = SETS.find((x) => x.id === S.set) || SETS[0]; return ownsSet(s) ? s : SETS[0]; };
 
@@ -596,9 +601,12 @@
       const nb = document.createElement('b'); nb.textContent = tt(m.name);
       const ds = document.createElement('small'); ds.textContent = tt(m.desc);
       tx.append(nb, ds);
-      const tg = document.createElement('i'); tg.textContent = T('target', { n: E.MODES[m.id].target }) + ' · ' + E.MODES[m.id].players + '👤';
+      const tg = document.createElement('i');
+      tg.textContent = m.link ? tt(m.tag) + ' ↗' : T('target', { n: E.MODES[m.id].target }) + ' · ' + E.MODES[m.id].players + '👤';
       b.append(ic, tx, tg);
-      b.onclick = () => { S.mode = m.id; saveS(); renderMenu(); };
+      b.onclick = m.link
+        ? () => { hub.track('mode_open', { game: 'dominoes', mode: m.id }); location.href = m.link; }
+        : () => { S.mode = m.id; saveS(); renderMenu(); };
       mb.appendChild(b);
     });
     const db = $('#diffs'); db.innerHTML = '';

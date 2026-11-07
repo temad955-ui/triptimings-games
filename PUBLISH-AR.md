@@ -11,10 +11,16 @@ site/
 ├── shared/
 │   ├── hub.js          اللغة (تلقائيًا حسب لغة الموبايل) + أفضل النتائج
 │   ├── economy.js/css  المحفظة ⭐ + إعلانات المكافأة + الشراء داخل التطبيق + نظام الدعوات
+│   ├── arcade.js/css   شاشات البداية والنهاية والمكافآت المشتركة للألعاب الجديدة
 │   ├── promo.js/css    إعلانات تريب تايمنجز المتقاطعة
 │   └── ads*.js/css     مساحات AdSense
 └── games/
-    ├── dominoes/       دومينو: عربي (شراكة) · سحب · بلوك · خمسات
+    ├── dominoes/       دومينو: عربي (شراكة) · سحب · بلوك · خمسات (+ رابط دومينو 31)
+    ├── domino31/       دومينو 31 (نسخة من ريبو domino31 عبر scripts/sync-domino31.sh)
+    ├── nile-blocks/    بلوكات النيل (ألغاز)
+    ├── neon-stack/     برج النيون (آركيد)
+    ├── desert-rush/    سباق الصحراء (سباقات)
+    ├── pharaoh-memory/ ذاكرة الفراعنة (ذكاء)
     ├── bubble-shooter/ فقاعات النيل
     ├── tourism-quiz/   مستكشف مصر
     ├── spin-wheel/     عجلة الحظ اليومية
@@ -68,3 +74,16 @@ cd site && python3 -m http.server 8080   # http://localhost:8080
 # أو
 docker compose up -d --build             # http://localhost:8080
 ```
+
+## تحديث دومينو 31 من الريبو بتاعه
+
+دومينو 31 بيفضل في الريبو المستقل `temad955-ui/domino31` (المحرك والسيرفر والاختبارات).
+المنصة بتاخد نسخة من واجهة الويب الجاهزة بس:
+
+```bash
+git clone https://github.com/temad955-ui/domino31.git ../domino31
+./scripts/sync-domino31.sh ../domino31
+git add site/games/domino31 && git commit -m "Sync Domino 31" && git push
+```
+
+على GitHub Pages يشتغل «اللعب ضد الكمبيوتر» فقط. اللعب أونلاين محتاج سيرفر domino31 (Docker على الـ VPS).

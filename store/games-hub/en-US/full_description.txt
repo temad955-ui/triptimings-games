@@ -1,7 +1,11 @@
 Trip Timings Games is a free collection of quick, beautiful games for your phone, plus daily rewards for your next trip to Egypt.
 
 ★ THE GAMES
-• Dominoes: Arabic partners, Draw, Block and All Fives in one game, with Easy, Medium and Hard AI.
+• Dominoes: Arabic partners, Draw, Block, All Fives and Egyptian Domino 31 in one game, with Easy, Medium and Hard AI.
+• Nile Blocks (puzzle): fit pieces on an 8×8 grid and clear rows and columns.
+• Neon Stack (arcade): tap at the perfect moment to build the tallest neon tower.
+• Desert Rush (racing): race across the desert, dodge rocks and grab stars as the speed climbs.
+• Pharaoh Memory (brain): match the pairs before time runs out, with more cards every level.
 • Nile Bubbles: aim, match three colours and drop the hanging bubbles. Every level gets faster.
 • Egypt Explorer Quiz: test what you know about the pyramids, the Nile, the Red Sea and the world. The clock gets tighter with every question.
 • CyberBreaker: a neon brick breaker with hundreds of stages and tactical laser cards.
