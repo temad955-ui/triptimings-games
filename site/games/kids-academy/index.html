@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#0b1a3a" />
+  <title>Kids Academy · Trip Timings Games</title>
+  <meta name="description" content="Kids Academy: trace Arabic and English letters, count and practise addition, subtraction and times tables. Free and ad-free on Trip Timings Games." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared/hub.css" />
+  <link rel="stylesheet" href="../../shared/promo.css" />
+  <link rel="stylesheet" href="../../shared/economy.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Kids page: no ads, no external links besides "home" (Google Play Families friendly). -->
+  <main class="kids">
+    <header class="k-bar">
+      <button class="k-back" id="backBtn" type="button" hidden>➜</button>
+      <h1 id="kTitle"></h1>
+      <div class="k-stars"><span id="kStars">0</span> ⭐</div>
+    </header>
+
+    <section id="menu" class="k-menu"></section>
+
+    <section id="trace" class="k-view" hidden>
+      <div class="k-word"><span id="tEmoji"></span><b id="tWord"></b></div>
+      <div class="k-canvas"><canvas id="tCanvas" aria-label="Trace the letter"></canvas></div>
+      <div class="k-row">
+        <button class="k-btn" id="tPrev" type="button">◀</button>
+        <button class="k-btn" id="tSay" type="button">🔊</button>
+        <button class="k-btn" id="tClear" type="button">🧽</button>
+        <button class="k-btn" id="tNext" type="button">▶</button>
+      </div>
+      <div class="k-strip" id="tStrip"></div>
+    </section>
+
+    <section id="math" class="k-view" hidden>
+      <div class="k-progress"><i id="mBar"></i></div>
+      <div class="k-q" id="mQ"></div>
+      <div class="k-objs" id="mObjs"></div>
+      <div class="k-opts" id="mOpts"></div>
+      <div class="k-streak" id="mStreak"></div>
+    </section>
+    <div class="k-cheer" id="cheer"></div>
+  </main>
+
+  <script src="../../shared/hub.js"></script>
+  <script src="../../shared/economy.js"></script>
+  <script>window.TTHub && TTHub.homeButton();</script>
+  <script src="game.js"></script>
+</body>
+</html>
