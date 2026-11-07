@@ -4,3 +4,5 @@ scripts/
 .git
 **/.DS_Store
 .github/
+tests/
+store/

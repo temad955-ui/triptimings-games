@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Game rules tests
+        run: node tests/dominoes-engine.test.js && node tests/chess-engine.test.js
       - name: Build image
         run: docker build -t triptimings-games .
       - name: Run and check pages
@@ -19,7 +21,9 @@ jobs:
           docker run -d --name ttg -p 8080:8080 triptimings-games
           for i in $(seq 1 20); do curl -fs http://localhost:8080/healthz && break; sleep 1; done
           for u in / /privacy.html /ads.txt /shared/ads.js /shared/ads-config.js \
-                   /games/cyberbreaker/ /games/bubble-shooter/ /games/snake/ \
+                   /games/cyberbreaker/ /games/bubble-shooter/ /games/dominoes/ /games/domino31/ /games/nile-blocks/ /games/neon-stack/ /games/desert-rush/ /games/pharaoh-memory/ \
+                   /games/sand-sort/ /games/parking-jam/ /games/arrow-escape/ /games/nile-match/ /games/chess/ /games/pool/ /games/kids-academy/ \
+                   /games/nile-racer/ /games/tuktuk-cairo/ /games/cairo-runner/ /shared/levels.js /shared/road3d.js \
                    /games/tourism-quiz/ /games/spin-wheel/; do
             code=$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:8080$u")
             echo "$code $u"; [ "$code" = 200 ] || exit 1

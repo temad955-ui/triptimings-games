@@ -50,6 +50,7 @@ rep('  <script src="game.js"></script>',
     "       The ribbon is off here because CyberBreaker's controls sit at the bottom.\n"
     '       Ad slots: settings in /shared/ads-config.js; no ads while #gameScreen is active. -->\n'
     '  <script src="../../shared/hub.js"></script>\n'
+    '  <script src="../../shared/economy.js"></script>\n'
     '  <script src="../../shared/promo.js" data-game="cyberbreaker" data-watch="#overModal" data-ribbon="0"></script>\n'
     '  <script src="../../shared/ads-config.js"></script>\n'
     '  <script src="../../shared/ads.js" data-playing="#gameScreen.active" data-menus="#overModal:not([hidden]), #clearModal:not([hidden])"></script>\n'

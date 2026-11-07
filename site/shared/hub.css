@@ -85,3 +85,14 @@ a { color: var(--gold-2); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- neon refresh (2026-11) — shared by every game ---------- */
+:root { --neon: #00f0ff; --neon-2: #ff2bd6; }
+.panel { border-color: rgba(0, 240, 255, .28); box-shadow: 0 0 34px rgba(0, 240, 255, .12), var(--shadow); }
+.stat { border-color: rgba(0, 240, 255, .22); box-shadow: inset 0 0 10px rgba(0, 240, 255, .06); }
+.stat b { text-shadow: 0 0 10px rgba(255, 210, 122, .35); }
+.game-title { text-shadow: 0 0 14px rgba(0, 240, 255, .45); }
+.btn { box-shadow: 0 6px 0 #b9831f, 0 0 22px rgba(242, 181, 68, .45); }
+.btn.nile { box-shadow: 0 6px 0 #1b8f84, 0 0 22px rgba(46, 196, 182, .45); }
+.big-score { text-shadow: 0 0 22px rgba(255, 210, 122, .55); }
+button, a { touch-action: manipulation; } /* no double-tap zoom delay on phones */

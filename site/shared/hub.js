@@ -3,7 +3,7 @@
    Loaded by the lobby and by every game BEFORE promo.js.
 
    window.TTHub
-     .lang            'ar' | 'en'   (saved in localStorage 'tt.lang')
+     .lang            'ar' | 'en'   system language by default; toggle saved in 'tt.lang'
      .setLang(l)
      .t(dict)         pick dict[lang] (falls back to dict.en / dict.ar)
      .getBest(id)     best score of a game
@@ -30,9 +30,23 @@
     try { localStorage.setItem(NS + key, JSON.stringify(val)); } catch (e) { /* private mode */ }
   }
 
+  // Language follows the phone/browser system language: Arabic for any Arabic
+  // locale, English for everyone else (global audience). ?lang=ar|en forces one
+  // (used by store links), and the in-app toggle is remembered.
+  function systemLang() {
+    var list = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en']);
+    for (var i = 0; i < list.length; i++) {
+      var l = String(list[i] || '').slice(0, 2).toLowerCase();
+      if (l === 'ar') return 'ar';
+      if (l === 'en') return 'en';
+    }
+    return 'en';
+  }
+  var forced = null;
+  try { forced = new URL(location.href).searchParams.get('lang'); } catch (e) { /* old browser */ }
+  if (forced !== 'ar' && forced !== 'en') forced = null;
   var saved = load('lang', null);
-  var browser = (navigator.language || 'ar').slice(0, 2).toLowerCase();
-  var lang = saved || (browser === 'ar' ? 'ar' : browser === 'en' ? 'en' : 'ar');
+  var lang = forced || saved || systemLang();
 
   function applyLang() {
     document.documentElement.lang = lang;

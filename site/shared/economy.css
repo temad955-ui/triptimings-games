@@ -1,0 +1,62 @@
+/* Trip Timings Games Hub — wallet chip, toasts, rewarded-ad / purchase / invite modals.
+   Self-contained (no CSS variables) so any game can load it. */
+.tt-coin-chip {
+  display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;
+  font: 800 14px/1 'Cairo', system-ui, sans-serif; color: #ffe9a8;
+  padding: 7px 12px; border-radius: 999px;
+  background: rgba(242, 181, 68, .14); border: 1px solid rgba(255, 210, 122, .45);
+  box-shadow: 0 0 14px rgba(255, 210, 122, .18);
+  font-variant-numeric: tabular-nums;
+}
+.tt-eco-toast {
+  position: fixed; z-index: 120; left: 50%; bottom: calc(86px + env(safe-area-inset-bottom));
+  transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  background: rgba(10, 8, 30, .94); color: #fff; border: 1px solid rgba(0, 240, 255, .45);
+  box-shadow: 0 0 22px rgba(0, 240, 255, .25); border-radius: 14px;
+  padding: 10px 16px; font: 700 15px 'Cairo', system-ui, sans-serif; max-width: calc(100vw - 32px); text-align: center;
+  transition: opacity .2s, transform .2s;
+}
+.tt-eco-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+.tt-eco-modal {
+  position: fixed; inset: 0; z-index: 110; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; padding: 16px; overflow-y: auto;
+  background: rgba(4, 3, 16, .78); backdrop-filter: blur(6px);
+  font-family: 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+.tt-eco-box {
+  width: 100%; max-width: 380px; display: grid; gap: 10px; text-align: center; color: #f4f1ea;
+  background: linear-gradient(160deg, #1a1446, #0c0a24); border-radius: 20px; padding: 20px 18px;
+  border: 1px solid rgba(167, 123, 255, .45); box-shadow: 0 0 40px rgba(167, 123, 255, .25), 0 20px 50px rgba(0, 0, 0, .5);
+}
+.tt-eco-box h3 { margin: 0; font-size: 21px; }
+.tt-eco-box p { margin: 0; color: #c3c0e0; font-size: 14px; }
+.tt-eco-tag { justify-self: center; font-weight: 800; font-size: 12px; letter-spacing: .5px; color: #00f0ff; text-transform: uppercase; }
+.tt-eco-note { font-size: 12px !important; color: #8f8bb8 !important; }
+.tt-eco-goal { color: #ffd27a !important; font-weight: 700; }
+.tt-eco-lbl { color: #8f8bb8; font-size: 12px; }
+.tt-eco-code {
+  font: 900 26px/1.2 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 4px; color: #00f0ff;
+  border: 1.5px dashed rgba(0, 240, 255, .55); border-radius: 12px; padding: 8px; user-select: all;
+}
+.tt-eco-btn {
+  appearance: none; border: 0; cursor: pointer; font: 800 16px 'Cairo', system-ui, sans-serif;
+  padding: 12px 18px; border-radius: 14px; color: #12002a;
+  background: linear-gradient(180deg, #7ffcff, #00d0e6); box-shadow: 0 0 18px rgba(0, 240, 255, .45);
+}
+.tt-eco-btn:disabled { opacity: .5; cursor: default; box-shadow: none; }
+.tt-eco-btn.ghost { background: transparent; color: #c3c0e0; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .16); }
+.tt-eco-btn:focus-visible { outline: 3px solid #ff2bd6; outline-offset: 3px; }
+.tt-eco-adscreen {
+  aspect-ratio: 16 / 9; border-radius: 14px; display: grid; place-content: center; gap: 2px;
+  background: radial-gradient(circle at 30% 20%, #3b2a80, #120c33 70%); border: 1px solid rgba(255, 255, 255, .08);
+}
+.tt-eco-adlogo { font-size: 44px; color: #f2b544; line-height: 1; animation: ttEcoPulse 1.2s ease-in-out infinite alternate; }
+.tt-eco-adscreen b { font-size: 20px; }
+.tt-eco-adscreen span { color: #aab1cf; font-size: 13px; }
+@keyframes ttEcoPulse { from { transform: scale(.92); } to { transform: scale(1.08); text-shadow: 0 0 20px #f2b544; } }
+.tt-eco-bar { height: 6px; border-radius: 9px; background: rgba(255, 255, 255, .1); overflow: hidden; }
+.tt-eco-bar i { display: block; height: 100%; background: linear-gradient(90deg, #ff2bd6, #00f0ff); transform-origin: left; transform: scaleX(0); }
+[dir="rtl"] .tt-eco-bar i { transform-origin: right; }
+.tt-eco-buyrow { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px; border-radius: 12px; background: rgba(255, 255, 255, .06); }
+.tt-eco-buyrow .price { color: #7ad66b; font-weight: 900; }
+@media (prefers-reduced-motion: reduce) { .tt-eco-adlogo { animation: none; } .tt-eco-toast { transition: none; } }

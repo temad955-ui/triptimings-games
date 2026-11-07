@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#07041a" />
+  <title>Nile 8-Ball Pool · Trip Timings Games</title>
+  <meta name="description" content="Nile 8-Ball Pool: aim, pull back and pot your balls before the computer. Free on Trip Timings Games." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared/hub.css" />
+  <link rel="stylesheet" href="../../shared/promo.css" />
+  <link rel="stylesheet" href="../../shared/ads.css" />
+  <link rel="stylesheet" href="../../shared/economy.css" />
+  <link rel="stylesheet" href="../../shared/arcade.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-bar">
+      <h1 class="game-title" data-t="title">بلياردو النيل</h1>
+      <div class="stats">
+        <div class="stat"><small data-t="wins">انتصارات</small><b id="wins">0</b></div>
+        <div class="stat"><small data-t="levelL">المستوى</small><b id="lvl">-</b></div>
+      </div>
+    </header>
+    <div class="turn" id="turn"></div>
+    <div class="board-wrap" id="wrap">
+      <canvas id="board" aria-label="Pool table"></canvas>
+      <div class="toast" id="toast"></div>
+    </div>
+    <div class="tools">
+      <button class="tool" id="guideBtn" type="button">📏 <b></b></button>
+      <button class="tool" id="newBtn" type="button">🎱 <b data-t="newGame"></b></button>
+    </div>
+  </main>
+
+  <div class="overlay" id="startPanel">
+    <div class="panel">
+      <h2 data-t="title">بلياردو النيل</h2>
+      <p data-t="howto"></p>
+      <div class="pick" id="pickLevel"></div>
+      <div class="pick themes" id="pickTheme"></div>
+      <button class="btn" id="startBtn" type="button" data-t="play">ابدأ</button>
+      <div class="ad-slot" data-slot="start"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overPanel" hidden>
+    <div class="panel">
+      <h2 id="overTitle"></h2>
+      <p class="new-best" id="overStars"></p>
+      <button class="btn" id="againBtn" type="button" data-t="again"></button>
+      <button class="btn ghost" id="shareBtn" type="button" data-t="share"></button>
+      <div class="ad-slot" data-slot="gameover"></div>
+    </div>
+  </div>
+
+  <div class="ad-slot" data-slot="banner-bottom" data-fixed="1"></div>
+
+  <script src="../../shared/hub.js"></script>
+  <script src="../../shared/economy.js"></script>
+  <script src="../../shared/promo.js" data-game="pool" data-home="1" data-ribbon="0"></script>
+  <script src="../../shared/ads-config.js"></script>
+  <script src="../../shared/ads.js" data-playing="body.playing" data-menus="#startPanel:not([hidden]), #overPanel:not([hidden])"></script>
+  <script src="game.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,11 @@
+{
+  "name": "Trip Timings Games",
+  "short_name": "TT Games",
+  "description": "Free games by Trip Timings: Dominoes, Nile Bubbles, Egypt Explorer Quiz, Daily Lucky Wheel and CyberBreaker.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b1026",
+  "theme_color": "#0b1026",
+  "icons": [{ "src": "games/dominoes/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

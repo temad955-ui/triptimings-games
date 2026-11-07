@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#07041a" />
+  <title>Desert Rush · Trip Timings Games</title>
+  <meta name="description" content="Desert Rush: race across the Egyptian desert, dodge obstacles and grab stars. Free racing game on Trip Timings Games." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../shared/hub.css" />
+  <link rel="stylesheet" href="../../shared/promo.css" />
+  <link rel="stylesheet" href="../../shared/ads.css" />
+  <link rel="stylesheet" href="../../shared/economy.css" />
+  <link rel="stylesheet" href="../../shared/arcade.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-bar">
+      <h1 class="game-title" data-t="title">سباق الصحراء</h1>
+      <div class="stats">
+        <div class="stat"><small data-t="score">النقاط</small><b id="score">0</b></div>
+        <div class="stat"><small data-t="best">الأفضل</small><b id="best">0</b></div>
+      </div>
+    </header>
+    <div class="board-wrap" id="wrap">
+      <canvas id="board" aria-label="Game board"></canvas>
+      <div class="toast" id="toast"></div>
+    </div>
+    <div class="tools" id="tools"></div>
+    <p class="hint" data-t="hint"></p>
+  </main>
+
+  <div class="overlay" id="startPanel">
+    <div class="panel">
+      <h2 data-t="title">سباق الصحراء</h2>
+      <p data-t="howto"></p>
+      <button class="btn" id="startBtn" type="button" data-t="play">ابدأ اللعب</button>
+      <div class="ad-slot" data-slot="start"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overPanel" hidden>
+    <div class="panel">
+      <h2 id="overTitle" data-t="over">انتهت اللعبة</h2>
+      <div class="big-score" id="overScore">0</div>
+      <p id="overBest"></p>
+      <button class="btn nile" id="continueBtn" type="button" hidden></button>
+      <button class="btn" id="againBtn" type="button" data-t="again">العب مرة أخرى</button>
+      <button class="btn ghost" id="shareBtn" type="button" data-t="share">تحدَّ أصحابك</button>
+      <div class="ad-slot" data-slot="gameover"></div>
+    </div>
+  </div>
+
+  <div class="ad-slot" data-slot="banner-bottom" data-fixed="1"></div>
+
+  <script src="../../shared/hub.js"></script>
+  <script src="../../shared/economy.js"></script>
+  <script src="../../shared/promo.js" data-game="desert-rush" data-home="1" data-ribbon="0"></script>
+  <script src="../../shared/ads-config.js"></script>
+  <script src="../../shared/ads.js" data-playing="body.playing" data-menus="#startPanel:not([hidden]), #overPanel:not([hidden])"></script>
+  <script src="../../shared/arcade.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
