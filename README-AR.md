@@ -26,7 +26,7 @@ triptimings-games/
     └── games/
         ├── bubble-shooter/   فقاعات النيل
         ├── tourism-quiz/     مستكشف مصر (40 سؤال في questions.js)
-        ├── snake/            الثعبان النيون (كلاسيك · بوابات · متاهة)
+        ├── dominoes/         دومينو: عربي شراكة · سحب · بلوك · خمسات (لعبة واحدة)
         ├── spin-wheel/       عجلة الحظ اليومية
         └── cyberbreaker/     CyberBreaker (نسخة من مجلد cyberbreaker/ في الريبو)
 ```
