@@ -1,0 +1,12 @@
+/* Nile Treasures — level map inside the start panel */
+.map { display: flex; flex-direction: column-reverse; align-items: center; gap: 6px; max-height: 38vh; overflow-y: auto; padding: 8px 0; margin: 4px 0 12px; }
+.map .node {
+  position: relative; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-weight: 900; font-size: 18px;
+  background: #1b1240; color: #8e86b8; border: 2px solid rgba(255, 255, 255, .15); flex: none;
+}
+.map .node:nth-child(4n+2) { transform: translateX(46px); }
+.map .node:nth-child(4n+4) { transform: translateX(-46px); }
+.map .node.done { background: linear-gradient(150deg, #2ec4b6, #1b6f8f); color: #fff; border-color: #7ff3e6; }
+.map .node.cur { background: linear-gradient(150deg, #ff2bd6, #7a2bff); color: #fff; border-color: #fff; box-shadow: 0 0 22px rgba(255, 43, 214, .8); animation: nodePulse 1s ease-in-out infinite alternate; }
+.map .node small { position: absolute; bottom: -9px; font-size: 10px; letter-spacing: -1px; color: #ffd23f; text-shadow: 0 0 4px #000; }
+@keyframes nodePulse { to { box-shadow: 0 0 34px rgba(255, 43, 214, 1); } }
