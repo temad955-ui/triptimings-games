@@ -1,0 +1,10 @@
+/* Cairo Runner */
+.pick { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin: 8px 0 12px; }
+.pick button {
+  flex: 1 1 0; min-width: 0; border-radius: 12px; padding: 8px 4px; font: 800 13px Cairo, sans-serif; cursor: pointer;
+  background: rgba(20, 14, 60, .8); color: #fff; border: 1.5px solid rgba(255, 255, 255, .15);
+}
+.pick button span { display: block; font-size: 24px; line-height: 1.2; }
+.pick button small { display: block; font-size: 10px; color: #ffd23f; }
+.pick button.on { border-color: #00f0ff; box-shadow: 0 0 14px rgba(0, 240, 255, .45); background: rgba(0, 240, 255, .12); }
+.board-wrap canvas { touch-action: none; }
